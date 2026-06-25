@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Enigmi</title>
+<style>
+body{
+  background:black;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  padding-top:100px;
+}
+input,button{
+  padding:10px;
+  font-size:18px;
+}
+</style>
+</head>
+<body>
+
+<p id="question"></p>
+
+<input id="answer">
+<button onclick="check()">Invia</button>
+
+<script>
+const levels = [
+  {q:"2+2", a:"4"},
+  {q:"Capitale d'Italia", a:"roma"}
+];
+
+let level = 0;
+
+function load(){
+  question.innerText = levels[level].q;
+  answer.value = "";
+}
+
+function check(){
+  let r = answer.value.toLowerCase().trim();
+
+  if(r === levels[level].a){
+    level++;
+
+    if(level >= levels.length){
+      question.innerText = "Fine";
+      return;
+    }
+
+    load();
+  }
+}
+
+load();
+</script>
+
+</body>
+</html>
